@@ -1,22 +1,18 @@
 import { Box, Button, TextField, MenuItem ,Typography } from "@mui/material";
-
 import { grey,lightBlue } from '@mui/material/colors';
+
 export default function Login() {
 
     return (
         <>
             <Box sx={{ height: '100vh', width: '100%', bgcolor: lightBlue[50], display : 'flex'  , flexDirection : "column" , justifyContent : "center" , alignItems : 'center'} }>
                 <Box sx={{
-                    // boxSizing:'border-box',
                     width: '960px',
                     height: '560px',
-                    // top : 0 , 
-                    // right : 0 , 
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: "center",
                     alignItems: "center",
-                    // borderRadius: 12,
                 }}>
                     <Box sx={{ display: "flex", justifyContent: 'space-around', alignItems: "center", width: '100%', height: '100%',  }}>
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignContent: 'center', margin: 5, width: '50%', height: '100%'}}>
@@ -52,7 +48,6 @@ export default function Login() {
                                 component="img"
                                 src='../public/image/dc5674da7415fc93ad3656c3d4ca4a2379e80c63.png'
                                 alt="imge3"
-
                                 sx={{ position: 'absolute', right: 0, bottom: 0, width: 250 }}
                             >
                             </Box>
