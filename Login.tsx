@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, MenuItem ,Typography } from "@mui/material";
 
 import { grey,lightBlue } from '@mui/material/colors';
 export default function Login() {
@@ -67,8 +67,8 @@ export default function Login() {
                     variant="standard"
                     sx={{ m: 1, width: '25ch' }}
                 >
-                    <option value={10}>English</option>
-                    <option value={20}>farsi</option>
+                    <MenuItem  value={10}>English</MenuItem>
+                    <MenuItem  value={20}>farsi</MenuItem>
 
                 </TextField>
             </Box>
