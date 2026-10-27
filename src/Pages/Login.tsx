@@ -1,12 +1,31 @@
 import { Box, Button, TextField, MenuItem, Typography } from "@mui/material";
 import { grey, lightBlue } from '@mui/material/colors';
 import { useTranslation } from "react-i18next";
+import { useForm } from "react-hook-form";
 
+type LoginFormValues = {
+    name: string;
+};
 
 export default function Login() {
-    const { t, i18n} = useTranslation();
+
+    const { t, i18n } = useTranslation();
+    const {
+        register,
+        handleSubmit,
+    } = useForm<LoginFormValues>({
+        mode: "onBlur",
+        defaultValues: {
+            name: "",
+        },
+    });
+
+    const onSubmit = (data: LoginFormValues) => {
+        onLogin(data.name.trim());
+    };
     return (
-        <>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
             <Box sx={{ height: '100vh', width: '100%', bgcolor: lightBlue[50], display: 'flex', flexDirection: "column", justifyContent: "center", alignItems: 'center' }}>
                 <Box sx={{
                     width: '960px',
@@ -31,6 +50,9 @@ export default function Login() {
                             <TextField sx={{ display: "flex", alignContent: 'center', justifyContent: 'center', width: '100%', marginBottom: 20 }}
                                 label={t("login.nameRequired")}
                                 variant="outlined"
+                                {...register("name", {
+                                    required: 'Name is required' ,
+                                })}
                             ></TextField>
                             <Button variant="contained" >{t("login.submit")}</Button>
                         </Box>
@@ -66,16 +88,17 @@ export default function Login() {
                 </Box>
                 <TextField
                     select
-                    label= {t("login.language")}
+                    label={t("login.language")}
                     defaultValue={10}
                     variant="standard"
-                    sx={{ m: 2, width: '25ch', marginTop : 2}}
+                    sx={{ m: 2, width: '25ch', marginTop: 2 }}
                 >
                     <MenuItem value={10} onClick={() => void i18n.changeLanguage("en")} >{t("login.languageEn")} </MenuItem>
                     <MenuItem value={20} onClick={() => void i18n.changeLanguage("fa")}>{t("login.languageFa")}</MenuItem>
 
                 </TextField>
             </Box>
-        </>
+        </form>
+
     )
 }
